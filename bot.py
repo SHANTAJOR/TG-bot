@@ -137,22 +137,4 @@ async def search_jobs(callback_query: types.CallbackQuery):
         await bot.edit_message_text(
             "❗ Сначала выберите город и возраст.",
             user_id,
-            callback_query.message.message_id,
-            reply_markup=main_menu()
-        )
-        return
-
-    if not user_jobs[user_id]:  # Если вакансии закончились, перезаполняем
-        user_jobs[user_id] = ALL_JOBS.get(city, {}).get(age, []).copy()
-
-    job = user_jobs[user_id].pop(random.randrange(len(user_jobs[user_id])))  # Выбираем случайную вакансию
-    await bot.edit_message_text(
-        f"🔹 Вакансия: {job}",
-        user_id,
-        callback_query.message.message_id,
-        reply_markup=main_menu()
-    )
-
-# === Запуск бота ===
-if __name__ == "__main__":
-    executor.start_polling(dp, skip_updates=True)
+.start_polling(dp, skip_updates
